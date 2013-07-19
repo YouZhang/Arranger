@@ -24,7 +24,8 @@ class tone():
             note_temp = int(note[1]) - 1;
             note_out = str(note_temp);
         else:
-            note_out = '-' + note;
+            temp = str(int(note) - 1)
+            note_out = '+' + temp;
         return note_out;
     
     # raise a semitone
@@ -58,15 +59,18 @@ class tone():
     
     #rasie chord 
     def high_chord(self,chord_in,n):
-        for i in range(len(chord_in)):
-            chord_in[i] = self.high_tone(chord_in[i],n);
-        return chord_in; 
-        
+        chord_out = range(len(chord_in));
+        for i in chord_out:
+            chord_out[i] = self.high_tone(chord_in[i],n);
+        return chord_out;
+    
+    #notice !!!! don't use chord_out = chord_in     
     #fall chord    
     def fall_chord(self,chord_in,n):
-        for i in range(len(chord_in)):
-            chord_in[i] = self.low_tone(chord_in[i],n);
-        return chord_in;    
+        chord_out = range(len(chord_in));
+        for i in chord_out:
+            chord_out[i] = self.low_tone(chord_in[i],n);
+        return chord_out;    
             
 class chord_gen(tone):
     
@@ -98,6 +102,13 @@ class chord_gen(tone):
         note_low = self.low_semi(chord_in[2]);
         chord_dim[2] = note_low;
         return chord_dim;
+        
+    # dim chord generate
+    # def gen_dim(self,chord_in):
+        # chord_dim = chord_in;
+        # note_low = self.low_semi(chord_in[2]);
+        # chord_dim[2] = note_low;
+        # return chord_dim;
         
     # sus4 chord generate    
     def gen_sus4(self,chord_in):
@@ -134,6 +145,7 @@ class chord_gen(tone):
         chord_add9.append(note_temp);
         return chord_add9;
         
+        
     # maj9 chord generate    
     def gen_maj9(self,chord_in):
         chord_maj9 = chord_in;
@@ -154,7 +166,9 @@ class chord_gen(tone):
         note_temp = self.high_tone(chord_in[1],1);
         chord_add11.append(note_temp);
         return chord_add11;
- 
-        
-
-       
+    
+    def gen_sus2(self,chord_in):
+        chord_sus2 = chord_in;
+        note_low = self.low_tone(chord_in[1],2);
+        chord_sus2[1] = note_low;
+        return chord_sus2;
