@@ -1,6 +1,5 @@
 #coding = utf-8
 import string;
-import os
 
 
 do = '1';
