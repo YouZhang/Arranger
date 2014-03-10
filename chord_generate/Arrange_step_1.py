@@ -1,11 +1,5 @@
 # -*- coding: cp936 -*-
 
-from __future__ import division
-import string;
-import chord_data_new;
-
-
-__doc__ = '''
 #judge the song (major or minor):
 #depart the song's section into serval part;
 # Arranger_first_step:  match the chord with major 3 or minor 6 chord
@@ -13,11 +7,9 @@ __doc__ = '''
 # Arranger_third_step:  change the chord with sus4 or ...
 # Arranger_Tuner:   base on the key,to change the Tone with other chord;
 
-@you can use the tab folder files to test this script;example:
-    file_path = '../tab.txt'
-    Arranged_chord_1,song_note,Tuning,section =  Arranger_first_step(file_path);
-@there are some method will be not used in the script;
-'''
+from __future__ import division
+import string;
+import chord_data_new;
 
 beat_sep = ') (';
 section_sep = ','
@@ -177,17 +169,25 @@ def F2Dm_C2Em(matched_chord,section_note):
     return matched_chord; 
     
 
-def Arranger_first_step(file_path):
+def Arranger_first_step(song):
     song_note = [];
     Arranged_chord_1 = [];
-    song,section = get_song(file_path);
+    section = song.split(section_sep);
+    # song,section = get_song(file_path);
     Tuning = judge_maj_or_min(song);
     for section_num in range(len(section)):
-        # print section[section_num]    #for test
+        # print section[section_num]
         share,note_list = note_share_cal(section[section_num])
-        # print share                   #for test
+        # print share
         matched_chord,section_note = match_chord(section[section_num],share,Tuning);
         matched_chord = Em2C_Am2F(matched_chord,section_note)
         Arranged_chord_1.append(matched_chord);
         song_note.append(note_list);
     return Arranged_chord_1,song_note,Tuning,section;
+
+        
+if __name__ == '__main__':
+    file_path = 'D:/matlab/sound_prj/ex_2/tab/tab/tab_zdssl.txt'
+    Arranged_chord_1,song_note,Tuning,section =  Arranger_first_step(file_path);
+    print Arranged_chord_1
+    print song_note;

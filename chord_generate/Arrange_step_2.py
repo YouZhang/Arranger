@@ -7,9 +7,10 @@
 # Arranger_third_step:  change the chord with sus4 or ...
 # Arranger_Tuner:   base on the key,to change the Tone with other chord;
 
-# @ use_method = changed_chord =  change_chord(song_note_lhc,chord_list_1_lhc,maj_or_min)
 # ex. : ['C', 'C', 'G', 'Fmaj7', 'C', 'C', 'C', 'C', 'G', 'C', 'G', 'F', 'Cadd9']
-
+# key = 'G';
+# file_path = 'D:/matlab/sound_prj/ex_2/tab/tab/tab_kbg.txt'
+# print Arranger_first_step(file_path);
 ###############################for  test ################################################################
 maj_or_min = 0;
 # chord_list_1 = ['C', 'C', 'G', 'Fmaj7','C', 'C', 'C', 'C', 'G', 'C', 'G', 'F', 'Cadd9']
@@ -121,7 +122,6 @@ def find_common_chord(chord_list):
         # elif(chord == 'G'):
             # changed_chord = 'Em';
     # return changed_chord;
-    
 # def change_common_chord(common_list,chord_list)  !!no use        
 def analysis_chord_1(chord_list_1,maj_or_min):
     # chord_list_1 = change_common_chord(chord_list_1);
@@ -147,5 +147,11 @@ def analysis_chord_1(chord_list_1,maj_or_min):
                    min_cnt = 0;
             else:
                 min_cnt = 0;
+    # chord_list_1 = change_common_chord(chord_list_1);
     return chord_list_1
 ####################################################################
+
+if __name__ == '__main__':
+    changed_chord =  change_chord(song_note_lhc,chord_list_1_lhc,maj_or_min)
+    print changed_chord
+    print find_common_chord(changed_chord)
