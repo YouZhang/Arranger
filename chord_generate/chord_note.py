@@ -1,5 +1,6 @@
 #coding = utf-8
 import string;
+import os
 
 
 do = '1';
@@ -171,3 +172,42 @@ class chord_gen(tone):
         note_low = self.low_tone(chord_in[1],2);
         chord_sus2[1] = note_low;
         return chord_sus2;
+ 
+if __name__ == '__main__':
+    cc = chord_gen();
+    temp = cc.C;
+    tone = '1';
+    print temp;
+    temp = ['1','3','5','3'];
+    print cc.high_chord(temp,1);
+    # print temp
+    print cc.high_chord(temp,2);
+    print cc.high_chord(temp,3);
+    print cc.high_chord(temp,4);
+    print cc.high_chord(temp,5);
+    print cc.high_chord(temp,6);
+    print cc.high_chord(temp,7);
+    print cc.high_chord(temp,8);
+    print cc.high_chord(temp,9);
+    print cc.high_chord(temp,10);
+    print cc.high_chord(temp,11);
+    # print cc.high_semi('3')
+    # print cc.high_tone(tone,3)
+    # print cc.high_tone(tone,3)
+    # print cc.low_tone(tone,3)
+    # print cc.gen_9(temp)
+    # print cc.gen_add11(temp)
+    # print cc.gen_min(temp)
+    # print cc.gen_aug(temp)
+    # print cc.gen_dim(temp)
+    # print cc.gen_min(cc.gen_dim(cc.gen_7(temp)));
+    # print cc.gen_sus2(temp);
+    # print cc.gen_sus4(temp);
+    # print cc.gen_6(temp);
+    # print cc.gen_7(temp);
+    # print cc.gen_maj7(temp);
+    # print cc.gen_add9(temp);
+    # print temp
+        
+
+       
